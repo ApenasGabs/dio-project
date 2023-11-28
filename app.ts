@@ -1,22 +1,22 @@
-class Account {
-  name: string;
-  accountNumber: number;
+import { CompanyAccount } from "./class/CompanyAccount";
+import { DioAccount } from "./class/DioAccount";
+import { PeopleAccount } from "./class/PeopleAccount";
 
+class Admin extends DioAccount {
+  balance: number;
   constructor(name: string, accountNumber: number) {
-    this.name = name;
-    this.accountNumber = accountNumber;
+    super(name, accountNumber);
+    this.balance = 20;
   }
-
-  deposit = () => {
-    console.log("deposit completed");
-  };
-  withdraw = () => {
-    console.log("withdraw completed");
+  getValue = () => {
+    this.balance;
+    console.log("balance: ", this.balance);
   };
 }
 
-const newAccount: Account = new Account("Gabs", 1);
-const account: Account = new Account("isadora", 2);
+const adminAccount: DioAccount = new Admin("Gabs", 1);
+const companyAccount: CompanyAccount = new CompanyAccount("Gabs", 1);
 
-console.log("newAccount: ", newAccount);
-account.deposit();
+const peopleAccount: PeopleAccount = new PeopleAccount(12345, "Isadora", 2);
+console.log("peopleAccount: ", peopleAccount);
+peopleAccount.deposit();
